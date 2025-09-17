@@ -16,7 +16,16 @@
     "TITLE": "Product Dashboard",
     "DESCRIPTION": "Your one-stop solution for managing products, inventory, and sales.",
     "GET_STARTED": "Get started",
-    "LEARN_MORE": "Learn more"
+    "LEARN_MORE": "Learn more",
+    "WELCOME_HEADING": "Welcome, your first destination for all your needs",
+    "FEATURED_PRODUCTS": "Featured Products",
+    "WHY_CHOOSE_US": "Why Choose Us",
+    "QUALITY_TITLE": "Premium Quality",
+    "QUALITY_DESC": "We source only the finest products for our customers.",
+    "FAST_SHIPPING_TITLE": "Fast Shipping",
+    "FAST_SHIPPING_DESC": "Quick and reliable delivery to your doorstep.",
+    "SECURE_PAYMENT_TITLE": "Secure Payment",
+    "SECURE_PAYMENT_DESC": "Your transactions are always safe with us."
   },
   "FOOTER": {
     "COPYRIGHT": "© {{year}} Product Dashboard. All rights reserved.",

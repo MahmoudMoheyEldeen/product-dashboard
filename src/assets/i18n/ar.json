@@ -16,7 +16,16 @@
     "TITLE": "لوحة تحكم المنتجات",
     "DESCRIPTION": "حلك الشامل لإدارة المنتجات والمخزون والمبيعات.",
     "GET_STARTED": "ابدأ الآن",
-    "LEARN_MORE": "المزيد"
+    "LEARN_MORE": "المزيد",
+    "WELCOME_HEADING": "أهلاً بكم، هنا وجهتكم الأولى لكل ما تحتاجونه",
+    "FEATURED_PRODUCTS": "منتجات مميزة",
+    "WHY_CHOOSE_US": "لماذا تختارنا",
+    "QUALITY_TITLE": "جودة عالية",
+    "QUALITY_DESC": "نوفر لكم أفضل المنتجات المختارة بعناية.",
+    "FAST_SHIPPING_TITLE": "شحن سريع",
+    "FAST_SHIPPING_DESC": "توصيل سريع وموثوق إلى باب منزلك.",
+    "SECURE_PAYMENT_TITLE": "دفع آمن",
+    "SECURE_PAYMENT_DESC": "معاملاتك دائماً آمنة معنا."
   },
   "FOOTER": {
     "COPYRIGHT": "© {{year}} لوحة تحكم المنتجات. جميع الحقوق محفوظة.",
