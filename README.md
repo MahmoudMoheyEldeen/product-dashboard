@@ -1,4 +1,4 @@
-# Advanced Product Management Dashboard
+# Product Management Dashboard
 
 ![Angular](https://img.shields.io/badge/Angular-17.3.0-red)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue)
@@ -14,17 +14,20 @@ A responsive, multi-language web application for product management built with A
 ### Core Features
 
 - **Product Listing & Management**
+
   - Display products in a responsive grid/carousel
   - Product filtering and search functionality
   - Detailed product views with ratings and pricing
   - Pagination and infinite scroll options
 
 - **Multi-language Support**
+
   - Full RTL support for Arabic language
   - Language switcher in the header
   - All UI elements, buttons, and messages are translatable
 
 - **Shopping Cart & Wishlist**
+
   - Add/remove products to cart
   - Persistent cart storage
   - Wishlist functionality
@@ -37,16 +40,19 @@ A responsive, multi-language web application for product management built with A
 ### Technical Implementation
 
 - **State Management**
+
   - NgRx store for global state management
   - Actions, Reducers, Selectors, and Effects
   - Optimized performance with memoized selectors
 
 - **API Integration**
+
   - RESTful API consumption
   - Error handling and loading states
   - Fake Store API integration
 
 - **Modern Angular Features**
+
   - Standalone components
   - Signal-based reactivity
   - Lazy loading modules
@@ -60,25 +66,30 @@ A responsive, multi-language web application for product management built with A
 ## 🛠️ Technologies Used
 
 - **Frontend Framework**
+
   - Angular 17+
   - TypeScript 5+
 
 - **State Management**
+
   - NgRx Store
   - NgRx Effects
   - NgRx Entity
 
 - **UI Components & Styling**
+
   - TailwindCSS for utility-first styling
   - PrimeNG for advanced UI components
   - Custom animations and transitions
 
 - **Internationalization**
+
   - NGX-Translate for i18n support
   - RTL layout support
   - Language detection
 
 - **Testing**
+
   - Jasmine and Karma for unit tests
   - Component testing
   - State testing
@@ -117,7 +128,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/product-dashboard.git
+git clone https://github.com/MahmoudMohy/product-dashboard.git
 
 # Navigate to the project directory
 cd product-dashboard
@@ -162,12 +173,3 @@ npm run lint
 # Generate production build
 npm run build:prod
 ```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
