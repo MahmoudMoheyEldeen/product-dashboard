@@ -1,0 +1,83 @@
+// Footer component styles
+:host {
+  display: block;
+  width: 100%;
+}
+
+// Footer links
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    margin-bottom: 0.5rem;
+    
+    a {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: #3b82f6;
+      }
+    }
+  }
+}
+
+// Newsletter form
+.newsletter-form {
+  display: flex;
+  
+  input[type="email"] {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem 0 0 0.375rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    
+    &:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 1px #3b82f6;
+    }
+  }
+  
+  button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 0.375rem 0.375rem 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: #2563eb;
+    }
+  }
+}
+
+// Social icons
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  
+  a {
+    color: #6b7280;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: #3b82f6;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

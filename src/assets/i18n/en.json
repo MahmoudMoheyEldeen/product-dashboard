@@ -1,0 +1,72 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "FAVORITES": "Favorites",
+    "CART": "Cart",
+    "SEARCH_PLACEHOLDER": "Search products..."
+  },
+  "LANGUAGES": {
+    "ENGLISH": "English",
+    "ARABIC": "العربية"
+  },
+  "HOME": {
+    "WELCOME": "Welcome to",
+    "TITLE": "Product Dashboard",
+    "DESCRIPTION": "Your one-stop solution for managing products, inventory, and sales.",
+    "GET_STARTED": "Get started",
+    "LEARN_MORE": "Learn more"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© {{year}} Product Dashboard. All rights reserved.",
+    "TERMS": "Terms of Service",
+    "PRIVACY": "Privacy Policy",
+    "CONTACT": "Contact Us"
+  },
+  "PRODUCTS": {
+    "TITLE": "Products",
+    "ADD_TO_CART": "Add to Cart",
+    "ADD_TO_FAVORITES": "Add to Favorites",
+    "PRICE": "Price",
+    "RATING": "Rating",
+    "SEARCH_PLACEHOLDER": "Search products...",
+    "SORT_BY": "Sort by",
+    "NO_PRODUCTS": "No products found",
+    "SORT_OPTIONS": {
+      "PRICE_ASC": "Price: Low to High",
+      "PRICE_DESC": "Price: High to Low",
+      "NAME_ASC": "Name: A to Z",
+      "NAME_DESC": "Name: Z to A"
+    },
+    "ERRORS": {
+      "LOADING": "Error loading products",
+      "TRY_AGAIN": "Please try again later"
+    }
+  },
+  "CATEGORIES": {
+    "TITLE": "Categories",
+    "ALL_CATEGORIES": "All Categories",
+    "NO_CATEGORIES": "No categories available"
+  },
+  "FAVORITES": {
+    "TITLE": "Favorites",
+    "NO_FAVORITES": "You don't have any favorites yet.",
+    "REMOVE_FROM_FAVORITES": "Remove from Favorites"
+  },
+  "CART": {
+    "TITLE": "Shopping Cart",
+    "EMPTY_CART": "Your cart is empty",
+    "SUBTOTAL": "Subtotal",
+    "PRODUCT": "Product",
+    "PRICE": "Price",
+    "QUANTITY": "Quantity",
+    "TOTAL": "Total",
+    "CONTINUE_SHOPPING": "Continue Shopping",
+    "CHECKOUT": "Proceed to Checkout",
+    "EMPTY_TITLE": "Your cart is empty",
+    "EMPTY_MESSAGE": "Looks like you haven't added anything to your cart yet.",
+    "START_SHOPPING": "Start Shopping",
+    "REMOVE_ITEM": "Remove"
+  }
+}

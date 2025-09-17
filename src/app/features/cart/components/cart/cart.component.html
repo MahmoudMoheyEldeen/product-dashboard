@@ -1,0 +1,131 @@
+<div class="cart-container p-4">
+    <h1 class="text-2xl font-bold mb-6">{{ 'CART.TITLE' | translate }}</h1>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center py-12">
+        <i class="pi pi-spin pi-spinner text-4xl text-primary mb-4"></i>
+        <p class="text-gray-600">{{ 'CART.LOADING' | translate }}</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !loading" class="p-toast p-toast-error mb-6">
+        <div class="p-toast-message p-toast-message-error">
+            <span class="p-toast-icon pi pi-exclamation-triangle"></span>
+            <div class="p-toast-message-content">
+                <div class="p-toast-summary">Error</div>
+                <div class="p-toast-detail">{{ error }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Content -->
+    <ng-container *ngIf="!loading && !error">
+        <div *ngIf="cartItems.length > 0; else emptyCart">
+            <!-- Cart Summary -->
+            <div class="mb-4 text-right">
+                <span class="text-lg font-semibold">{{ totalItems }} {{ totalItems === 1 ? 'item' : 'items' }} in your
+                    cart</span>
+            </div>
+
+            <!-- Each Cart Section -->
+            <div *ngFor="let cart of cartItems" class="mb-8 border-b pb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Order #{{ cart.id }}</h2>
+                    <div class="text-gray-600">
+                        <span>{{ cart.date | date:'mediumDate' }}</span>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <p-table [value]="[cart]" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-sm">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>{{ 'CART.PRODUCT' | translate }}</th>
+                                <th class="text-right">{{ 'CART.PRICE' | translate }}</th>
+                                <th class="text-center">{{ 'CART.QUANTITY' | translate }}</th>
+                                <th class="text-right">{{ 'CART.TOTAL' | translate }}</th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-cart>
+                            <ng-container
+                                *ngFor="let product of cart.products; let last = last; trackBy: trackByProductId">
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-4">
+                                            <img [src]="product.image || 'assets/images/placeholder.png'"
+                                                [alt]="product.title" class="w-16 h-16 object-cover rounded">
+                                            <div>
+                                                <h3 class="font-semibold">{{ product.title }}</h3>
+                                                <p class="text-gray-600 text-sm">{{ product.category }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">{{ product.price | currency }}</td>
+                                    <td class="text-center">
+                                        <p-inputNumber [showButtons]="true" [min]="1" [max]="100"
+                                            [inputId]="'quantity-' + product.id" [ngModel]="product.quantity"
+                                            (onInput)="updateQuantity(cart.id, product, +($event.value || 1))">
+                                        </p-inputNumber>
+                                    </td>
+                                    <td class="text-right">{{ (product.price * product.quantity) | currency }}</td>
+                                    <td class="text-right">
+                                        <button pButton pRipple icon="pi pi-trash"
+                                            class="p-button-text p-button-danger p-button-sm"
+                                            (click)="removeItem(cart.id, product.id)">
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <tr>
+                                <td colspan="3" class="text-right font-semibold">{{ 'CART.SUBTOTAL' | translate }}:</td>
+                                <td class="text-right">
+                                    {{ getCartSubtotal(cart) | currency }}
+                                </td>
+                                <td></td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+
+            <!-- Overall Total -->
+            <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold">{{ 'CART.TOTAL' | translate }}:</span>
+                    <span class="text-xl font-bold text-primary">{{ subtotal | currency }}</span>
+                </div>
+            </div>
+
+            <div class="flex justify-between mt-6 gap-4">
+                <button pButton pRipple icon="pi pi-trash" class="p-button-text p-button-danger" (click)="clearCart()"
+                    [disabled]="cartItems.length === 0">
+                    {{ 'CART.CLEAR_CART' | translate }}
+                </button>
+
+                <div class="flex gap-4">
+                    <button pButton pRipple icon="pi pi-arrow-left" class="p-button-outlined" routerLink="/products">
+                        {{ 'CART.CONTINUE_SHOPPING' | translate }}
+                    </button>
+                    <button pButton pRipple icon="pi pi-credit-card" class="p-button-success"
+                        [disabled]="cartItems.length === 0">
+                        {{ 'CART.CHECKOUT' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #emptyCart>
+            <div class="text-center py-12">
+                <i class="pi pi-shopping-cart text-6xl text-gray-300 mb-4"></i>
+                <h2 class="text-xl font-semibold mb-2">{{ 'CART.EMPTY_TITLE' | translate }}</h2>
+                <p class="text-gray-600 mb-6">{{ 'CART.EMPTY_MESSAGE' | translate }}</p>
+                <button pButton pRipple icon="pi pi-arrow-right" class="p-button-primary" routerLink="/products">
+                    {{ 'CART.START_SHOPPING' | translate }}
+                </button>
+            </div>
+        </ng-template>
+    </ng-container>
+</div>

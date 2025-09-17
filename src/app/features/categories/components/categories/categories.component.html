@@ -1,0 +1,38 @@
+<div class="categories-container">
+  <div class="categories-header">
+    <h1>Product Categories</h1>
+    <p>Browse our wide range of product categories</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="error-message">
+    <i class="pi pi-exclamation-triangle"></i>
+    {{ error }}
+    <button (click)="loadCategories()" class="retry-button">
+      <i class="pi pi-refresh"></i> Try Again
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <p-progressSpinner styleClass="loading-spinner"></p-progressSpinner>
+    <p>Loading categories...</p>
+  </div>
+
+  <!-- Categories Grid -->
+  <div *ngIf="!loading && !error" class="categories-grid">
+    <div *ngFor="let category of categories" class="category-card" 
+         [routerLink]="['/products']" [queryParams]="{ category: category.slug }">
+      <div class="category-content">
+        <div class="category-icon">
+          <i class="pi" [ngClass]="getCategoryIcon(category.name)"></i>
+        </div>
+        <h3>{{ category.name }}</h3>
+        <p class="category-description">{{ category.description }}</p>
+        <span class="explore-link">
+          Explore <i class="pi pi-arrow-right"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

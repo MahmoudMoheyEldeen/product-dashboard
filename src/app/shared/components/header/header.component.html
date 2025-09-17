@@ -1,0 +1,107 @@
+<header class="bg-white shadow-sm sticky top-0 z-50" [dir]="translate.currentLang === 'ar' ? 'rtl' : 'ltr'">
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <!-- Logo and Navigation -->
+      <div class="flex items-center">
+        <a routerLink="/" class="flex items-center">
+          <img src="assets/images/nanoLogo.png" alt="ProductDash" class="h-14">
+        </a>
+        <nav class="hidden md:flex">
+          <div class="flex" [class.ml-6]="translate.currentLang !== 'ar'" [class.mr-6]="translate.currentLang === 'ar'">
+            <a [routerLink]="['/']" routerLinkActive="text-primary-600 font-medium"
+              [routerLinkActiveOptions]="{exact: true}" class="hover:text-primary-500 transition-colors px-4">
+              {{ 'HEADER.HOME' | translate }}
+            </a>
+            <a [routerLink]="['/products']" routerLinkActive="text-primary-600 font-medium"
+              class="hover:text-primary-500 transition-colors px-4">
+              {{ 'HEADER.PRODUCTS' | translate }}
+            </a>
+            <a [routerLink]="['/categories']" routerLinkActive="text-primary-600 font-medium"
+              class="hover:text-primary-500 transition-colors px-4">
+              {{ 'HEADER.CATEGORIES' | translate }}
+            </a>
+            <a [routerLink]="['/favorites']" routerLinkActive="text-primary-600 font-medium"
+              class="hover:text-primary-500 transition-colors px-4">
+              {{ 'HEADER.FAVORITES' | translate }}
+              <span *ngIf="(favoritesCount$ | async) as count"
+                class="bg-primary-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center ml-1">
+                {{ count }}
+              </span>
+            </a>
+            <a [routerLink]="['/cart']" routerLinkActive="text-primary-600 font-medium"
+              class="hover:text-primary-500 transition-colors px-4 flex items-center">
+              {{ 'HEADER.CART' | translate }}
+              <span *ngIf="(cartItemsCount$ | async) as count"
+                class="bg-primary-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center ml-1">
+                {{ count }}
+              </span>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Search and Actions -->
+      <div class="flex-1 max-w-xl px-4">
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-search text-gray-400"></i>
+          <input type="text" pInputText [(ngModel)]="searchQuery" (keyup.enter)="onSearch()"
+            [placeholder]="'HEADER.SEARCH_PLACEHOLDER' | translate" class="w-full" />
+        </span>
+      </div>
+
+      <!-- User Actions -->
+      <div class="flex items-center space-x-4">
+        <!-- Language Selector -->
+        <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event.value)"
+          optionLabel="name" [style]="{'min-width': '140px'}" [showClear]="false" panelStyleClass="language-dropdown-panel">
+          <ng-template let-language pTemplate="selectedItem">
+            <div class="flex align-items-center gap-2">
+              <img [src]="language.flag" [alt]="language.name" style="width: 20px; height: 20px; border-radius: 2px; object-fit: cover;">
+              <span class="language-name">{{language.name}}</span>
+            </div>
+          </ng-template>
+          <ng-template let-language pTemplate="item">
+            <div class="flex align-items-center gap-2 p-2 hover:bg-gray-100 rounded">
+              <img [src]="language.flag" [alt]="language.name" style="width: 20px; height: 20px; border-radius: 2px; object-fit: cover;">
+              <span class="language-name">{{language.name}}</span>
+            </div>
+          </ng-template>
+        </p-dropdown>
+
+        <button pButton pRipple icon="pi pi-heart" class="p-button-text p-button-rounded"></button>
+        <button pButton pRipple icon="pi pi-shopping-cart" class="p-button-text p-button-rounded"></button>
+        <button pButton pRipple icon="pi pi-user" class="p-button-text p-button-rounded"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu (Hidden on larger screens) -->
+<div class="md:hidden bg-white shadow-md">
+  <div class="container mx-auto px-4 py-2 flex justify-around">
+    <a routerLink="/" class="flex flex-col items-center p-2 text-gray-600 hover:text-primary-500">
+      <i class="pi pi-home"></i>
+      <span class="text-xs mt-1">Home</span>
+    </a>
+    <a routerLink="/products" class="flex flex-col items-center p-2 text-gray-600 hover:text-primary-500">
+      <i class="pi pi-th-large"></i>
+      <span class="text-xs mt-1">Products</span>
+    </a>
+    <a routerLink="/categories" class="flex flex-col items-center p-2 text-gray-600 hover:text-primary-500">
+      <i class="pi pi-tags"></i>
+      <span class="text-xs mt-1">Categories</span>
+    </a>
+    <a routerLink="/favorites" class="flex flex-col items-center p-2 text-gray-600 hover:text-primary-500">
+      <i class="pi pi-heart"></i>
+      <span class="text-xs mt-1">Favorites</span>
+    </a>
+    <a routerLink="/cart" class="flex flex-col items-center p-2 text-gray-600 hover:text-primary-500">
+      <i class="pi pi-shopping-cart"></i>
+      <span class="text-xs mt-1">Cart</span>
+    </a>
+    <a routerLink="/account" class="flex flex-col items-center p-2 text-gray-600 hover:text-primary-500">
+      <i class="pi pi-user"></i>
+      <span class="text-xs mt-1">Account</span>
+    </a>
+  </div>
+</div>

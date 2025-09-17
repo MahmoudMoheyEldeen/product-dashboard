@@ -1,0 +1,212 @@
+<div class="products-container p-4">
+    <!-- Header with title and search/sort -->
+    <div class="flex flex-col gap-4 mb-6">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <h1 class="text-2xl font-bold">Products</h1>
+                <div *ngIf="selectedCategory"
+                    class="flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                    <span>{{ selectedCategory | titlecase }}</span>
+                    <button (click)="clearCategoryFilter()" class="ml-2 text-blue-600 hover:text-blue-800">
+                        <i class="pi pi-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+                <!-- Search -->
+                <div class="search-container w-full md:w-auto">
+                    <div class="search-input-wrapper">
+                        <i class="pi pi-search search-icon"></i>
+                        <input type="text" [(ngModel)]="searchQuery" (input)="onSearchInput()"
+                            placeholder="Search by name, category, or description..." class="search-input"
+                            autocomplete="off">
+                        <button *ngIf="searchQuery" (click)="clearSearch()" class="clear-search" type="button"
+                            aria-label="Clear search">
+                            <i class="pi pi-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sort -->
+                <div class="sort-container w-full md:w-auto">
+                    <div class="sort-input-wrapper">
+                        <i class="pi pi-sort-alt sort-icon"></i>
+                        <select class="sort-select" [(ngModel)]="selectedSort" (change)="onSortChange()">
+                            <option *ngFor="let option of sortOptions" [ngValue]="option">
+                                {{ option.label }}
+                            </option>
+                        </select>
+                        <i class="pi pi-chevron-down sort-arrow"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skeleton Loader -->
+        <div *ngIf="loading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product Card Skeleton -->
+            <div *ngFor="let item of [1,2,3,4,5,6,7,8]" class="product-card">
+                <div class="p-card" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+                    <!-- Card Header Skeleton -->
+                    <div class="p-card-header">
+                        <div class="h-6 bg-gray-200 rounded w-3/4 skeleton mb-1"></div>
+                        <div class="h-4 bg-gray-200 rounded w-1/2 skeleton"></div>
+                    </div>
+                    
+                    <!-- Image Placeholder -->
+                    <div class="flex-grow flex flex-col">
+                        <div class="h-48 flex items-center justify-center p-4 bg-white">
+                            <div class="w-full h-full bg-gray-100 rounded skeleton"></div>
+                        </div>
+                        
+                        <!-- Price Skeleton -->
+                        <div class="mt-2 px-2">
+                            <div class="h-6 bg-gray-200 rounded w-1/4 skeleton mb-2"></div>
+                            <div class="h-12 bg-gray-100 rounded skeleton"></div>
+                        </div>
+                        
+                        <!-- Rating Skeleton -->
+                        <div class="flex items-center mt-2 px-2">
+                            <div class="flex">
+                                <div class="h-4 w-4 bg-gray-200 rounded-full mr-1 skeleton"></div>
+                                <div class="h-4 w-4 bg-gray-200 rounded-full mr-1 skeleton"></div>
+                                <div class="h-4 w-4 bg-gray-200 rounded-full mr-1 skeleton"></div>
+                                <div class="h-4 w-4 bg-gray-200 rounded-full mr-1 skeleton"></div>
+                                <div class="h-4 w-4 bg-gray-200 rounded-full skeleton"></div>
+                            </div>
+                            <div class="h-3 w-8 bg-gray-200 rounded ml-2 skeleton"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Buttons Skeleton -->
+                    <div class="p-card-footer flex mt-4">
+                        <div class="h-10 bg-gray-200 rounded flex-1 skeleton"></div>
+                        <div class="h-10 w-10 bg-gray-200 rounded ml-2 skeleton"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error state -->
+        <div *ngIf="error" class="p-toast p-toast-error">
+            <div class="p-toast-message p-toast-message-error">
+                <span class="p-toast-icon pi pi-exclamation-triangle"></span>
+                <div class="p-toast-message-content">
+                    <div class="p-toast-summary">Error</div>
+                    <div class="p-toast-detail">{{ error }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products grid -->
+        <div *ngIf="!loading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <ng-container *ngFor="let product of products">
+                <div class="product-card">
+                    <p-card [header]="truncateText(product.title, 25)" 
+                          [subheader]="product.category | titlecase"
+                          [style]="{'width': '100%', 'height': '100%', 'display': 'flex', 'flex-direction': 'column'}">
+                        <div class="flex-grow flex flex-col">
+                            <!-- Product Image -->
+                            <div class="h-48 flex items-center justify-center p-4 bg-white">
+                                <img [src]="product.image" [alt]="product.title"
+                                    class="max-h-full max-w-full object-contain"
+                                    (error)="handleImageError($event, product)">
+                            </div>
+
+                            <!-- Product Info -->
+                            <div class="mt-2 px-2">
+                                <p class="text-lg font-semibold text-primary">{{ product.price | currency:'USD' }}</p>
+                                <p class="text-gray-600 text-sm mb-2 description-text" [title]="product.description">
+                                    {{ truncateText(product.description, 100) || 'No description available' }}
+                                </p>
+                            </div>
+
+                            <!-- Rating -->
+                            <div class="flex items-center mt-auto px-2" *ngIf="product.rating">
+                                <p-rating [ngModel]="product.rating.rate" [readonly]="true" [cancel]="false"
+                                    [style]="{'font-size': '0.9rem'}"></p-rating>
+                                <span class="ml-2 text-xs text-gray-500">({{ product.rating.count }})</span>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="mt-4 flex justify-between">
+                            <button pButton pRipple type="button" icon="pi pi-shopping-cart" label="Add to Cart"
+                                class="p-button-sm" (click)="onAddToCart(product)">
+                            </button>
+                            <button pButton pRipple type="button" icon="pi pi-heart" label="Favorite"
+                                class="p-button-outlined p-button-sm p-button-secondary ml-2"
+                                (click)="onAddToFavorites(product)">
+                            </button>
+                        </div>
+                    </p-card>
+                </div>
+            </ng-container>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container" *ngIf="totalPages > 1">
+            <div class="pagination">
+                <!-- Previous button -->
+                <button class="pagination-arrow" [disabled]="page === 1" (click)="goToPage(page - 1)"
+                    aria-label="Previous page">
+                    &laquo;
+                </button>
+
+                <!-- First page -->
+                <button *ngIf="showFirstPage()" class="pagination-page" [class.active]="page === 1"
+                    (click)="goToPage(1)">
+                    1
+                </button>
+
+                <!-- Ellipsis before page numbers -->
+                <span *ngIf="showFirstEllipsis()" class="pagination-ellipsis">...</span>
+
+                <!-- Page numbers -->
+                <ng-container *ngFor="let p of getPageRange()">
+                    <button class="pagination-page" [class.active]="p === page" (click)="goToPage(p)">
+                        {{ p }}
+                    </button>
+                </ng-container>
+
+                <!-- Ellipsis after page numbers -->
+                <span *ngIf="showLastEllipsis()" class="pagination-ellipsis">...</span>
+
+                <!-- Last page -->
+                <button *ngIf="showLastPage()" class="pagination-page" [class.active]="page === totalPages"
+                    (click)="goToPage(totalPages)">
+                    {{ totalPages }}
+                </button>
+
+                <!-- Next button -->
+                <button class="pagination-arrow" [disabled]="page === totalPages" (click)="goToPage(page + 1)"
+                    aria-label="Next page">
+                    &raquo;
+                </button>
+            </div>
+
+            <!-- Rows per page selector -->
+            <div class="rows-per-page">
+                <span>Rows per page:</span>
+                <select class="rows-selector" [(ngModel)]="limit" (change)="onRowsPerPageChange()">
+                    <option *ngFor="let option of rowsPerPageOptions" [value]="option">{{ option }}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Empty state -->
+        <div *ngIf="products.length === 0 && !loading" class="text-center py-12">
+            <i class="pi pi-inbox text-6xl text-gray-300 mb-4"></i>
+            <h2 class="text-xl font-bold mb-2">
+                {{ selectedCategory ? 'No products found in ' + (selectedCategory | titlecase) : 'No products found' }}
+            </h2>
+            <p class="text-gray-600 mb-6">
+                {{ selectedCategory ? 'Try a different category or ' : '' }}search for something else.
+                <button *ngIf="selectedCategory" (click)="clearCategoryFilter()"
+                    class="text-blue-600 hover:underline ml-1">
+                    Clear filter
+                </button>
+            </p>
+        </div>
+    </div>

@@ -1,0 +1,29 @@
+<div class="favorites-container">
+  <div class="favorites-header">
+    <h1>{{ 'FAVORITES.TITLE' | translate }}</h1>
+    <p *ngIf="(favorites$ | async)?.length === 0" class="empty-message">
+      {{ 'FAVORITES.EMPTY' | translate }}
+    </p>
+  </div>
+
+  <div *ngIf="error$ | async as error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading$ | async; else favoritesList" class="loading">
+    <p>{{ 'COMMON.LOADING' | translate }}...</p>
+  </div>
+
+  <ng-template #favoritesList>
+    <div class="favorites-grid">
+      <div *ngFor="let product of favorites$ | async" class="favorite-item">
+        <app-product-card [product]="product">
+          <button class="remove-button" (click)="removeFromFavorites(product.id)"
+            [title]="'FAVORITES.REMOVE' | translate">
+            <i class="pi pi-times"></i>
+          </button>
+        </app-product-card>
+      </div>
+    </div>
+  </ng-template>
+</div>

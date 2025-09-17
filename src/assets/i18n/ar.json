@@ -1,0 +1,72 @@
+{
+  "HEADER": {
+    "HOME": "الرئيسية",
+    "PRODUCTS": "المنتجات",
+    "CATEGORIES": "الأقسام",
+    "FAVORITES": "المفضلة",
+    "CART": "السلة",
+    "SEARCH_PLACEHOLDER": "ابحث عن منتجات..."
+  },
+  "LANGUAGES": {
+    "ENGLISH": "English",
+    "ARABIC": "العربية"
+  },
+  "HOME": {
+    "WELCOME": "مرحباً بك في",
+    "TITLE": "لوحة تحكم المنتجات",
+    "DESCRIPTION": "حلك الشامل لإدارة المنتجات والمخزون والمبيعات.",
+    "GET_STARTED": "ابدأ الآن",
+    "LEARN_MORE": "المزيد"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© {{year}} لوحة تحكم المنتجات. جميع الحقوق محفوظة.",
+    "TERMS": "شروط الخدمة",
+    "PRIVACY": "سياسة الخصوصية",
+    "CONTACT": "اتصل بنا"
+  },
+  "PRODUCTS": {
+    "TITLE": "المنتجات",
+    "ADD_TO_CART": "أضف إلى السلة",
+    "ADD_TO_FAVORITES": "أضف إلى المفضلة",
+    "PRICE": "السعر",
+    "RATING": "التقييم",
+    "SEARCH_PLACEHOLDER": "ابحث عن منتجات...",
+    "SORT_BY": "ترتيب حسب",
+    "NO_PRODUCTS": "لم يتم العثور على منتجات",
+    "SORT_OPTIONS": {
+      "PRICE_ASC": "السعر: من الأقل إلى الأعلى",
+      "PRICE_DESC": "السعر: من الأعلى إلى الأقل",
+      "NAME_ASC": "الاسم: من أ إلى ي",
+      "NAME_DESC": "الاسم: من ي إلى أ"
+    },
+    "ERRORS": {
+      "LOADING": "حدث خطأ في تحميل المنتجات",
+      "TRY_AGAIN": "الرجاء المحاولة مرة أخرى لاحقاً"
+    }
+  },
+  "CATEGORIES": {
+    "TITLE": "الأقسام",
+    "ALL_CATEGORIES": "جميع الأقسام",
+    "NO_CATEGORIES": "لا توجد أقسام متاحة"
+  },
+  "FAVORITES": {
+    "TITLE": "المفضلة",
+    "NO_FAVORITES": "لا توجد عناصر في المفضلة حتى الآن.",
+    "REMOVE_FROM_FAVORITES": "إزالة من المفضلة"
+  },
+  "CART": {
+    "TITLE": "سلة التسوق",
+    "EMPTY_CART": "سلة التسوق فارغة",
+    "SUBTOTAL": "المجموع الفرعي",
+    "PRODUCT": "المنتج",
+    "PRICE": "السعر",
+    "QUANTITY": "الكمية",
+    "TOTAL": "الإجمالي",
+    "CONTINUE_SHOPPING": "متابعة التسوق",
+    "CHECKOUT": "إتمام الشراء",
+    "EMPTY_TITLE": "سلة التسوق فارغة",
+    "EMPTY_MESSAGE": "يبدو أنك لم تقم بإضافة أي منتجات إلى سلة التسوق الخاصة بك بعد.",
+    "START_SHOPPING": "ابدأ التسوق",
+    "REMOVE_ITEM": "حذف"
+  }
+}

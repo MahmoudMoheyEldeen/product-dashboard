@@ -1,0 +1,232 @@
+/* PrimeNG Custom Styles */
+
+/* Dropdown styling */
+.p-dropdown {
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ced4da;
+  background: #ffffff;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  
+  .p-dropdown-label {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #495057;
+  }
+  
+  .p-dropdown-trigger {
+    padding: 0 0.75rem;
+    color: #6c757d;
+    
+    &:hover {
+      color: #343a40;
+    }
+  }
+  
+  &:not(.p-disabled):hover {
+    border-color: #3f51b5;
+  }
+  
+  &:not(.p-disabled).p-focus {
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, 0.25);
+    outline: 0 none;
+  }
+}
+
+/* Dropdown panel styling */
+.p-dropdown-panel {
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  
+  .p-dropdown-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e4e4e4;
+    background: #f8f9fa;
+    margin: 0;
+  }
+  
+  .p-dropdown-items {
+    padding: 0.5rem 0;
+    
+    .p-dropdown-item {
+      margin: 0;
+      padding: 0.75rem 1.25rem;
+      border: 0 none;
+      color: #495057;
+      background: transparent;
+      transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+      border-radius: 0;
+      
+      &:hover {
+        color: #495057;
+        background: #e9ecef;
+      }
+      
+      &.p-highlight {
+        color: #ffffff;
+        background: #3f51b5;
+      }
+    }
+  }
+}
+
+/* Product sort dropdown specific styling */
+.product-sort-dropdown {
+  .p-dropdown-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .p-dropdown-trigger {
+    background-color: #f8f9fa;
+    border-left: 1px solid #e9ecef;
+  }
+  
+  &.p-dropdown {
+    border-color: #dee2e6;
+    
+    &:hover {
+      border-color: #3f51b5;
+    }
+  }
+  
+  .pi-sort-amount-up, .pi-sort-amount-down {
+    color: #3f51b5;
+  }
+}
+
+/* Button styling */
+.p-button {
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  
+  &.p-button-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, 0.25);
+  }
+  
+  .p-button-icon-left {
+    margin-right: 0.5rem;
+  }
+}
+
+/* Input styling */
+.p-inputtext {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  
+  &:enabled:focus {
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 0.2rem rgba(63, 81, 181, 0.25);
+  }
+}
+
+.p-input-icon-left {
+  > i {
+    left: 0.75rem;
+    color: #6b7280;
+  }
+  
+  > .p-inputtext {
+    padding-left: 2.5rem;
+  }
+}
+
+/* Card styling */
+.p-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .p-card-subtitle {
+    color: #6b7280;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  
+  .p-card-content {
+    padding: 1rem;
+  }
+  
+  .p-card-footer {
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+}
+
+/* Rating styling */
+.p-rating {
+  .p-rating-icon {
+    color: #ffc107;
+    margin-right: 0.25rem;
+    font-size: 1.25rem;
+    
+    &.p-rating-icon-active {
+      color: #ffc107;
+    }
+  }
+}
+
+/* Paginator styling */
+.p-paginator {
+  padding: 0.75rem;
+  border-radius: 6px;
+  
+  .p-paginator-element {
+    margin: 0 0.125rem;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    
+    &.p-highlight {
+      background-color: #3f51b5;
+      color: #ffffff;
+    }
+  }
+}
+
+/* Product card specific styling */
+.product-card {
+  height: 100%;
+  
+  .p-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-image-container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #f9fafb;
+    
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+}

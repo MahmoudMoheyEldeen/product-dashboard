@@ -1,0 +1,108 @@
+// Header component styles
+:host {
+    display: block;
+    width: 100%;
+}
+
+// Language Dropdown
+:host ::ng-deep {
+  .p-dropdown {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: #ffffff;
+    
+    &:not(.p-disabled):hover {
+      border-color: #9ca3af;
+    }
+    
+    &:not(.p-disabled).p-focus {
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      border-color: #3b82f6;
+    }
+    
+    .p-dropdown-label {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      color: #374151;
+    }
+    
+    .p-dropdown-trigger {
+      color: #6b7280;
+      width: 2.5rem;
+    }
+  }
+  
+  .language-dropdown-panel {
+    .p-dropdown-items {
+      padding: 0.5rem 0;
+      
+      .p-dropdown-item {
+        padding: 0.5rem 1rem;
+        color: #374151;
+        font-size: 0.875rem;
+        
+        &:hover {
+          background: #f3f4f6;
+        }
+        
+        &.p-highlight {
+          background: #f9fafb;
+          color: #1f2937;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  .language-name {
+    font-size: 0.875rem;
+    color: inherit;
+  }
+}
+
+// RTL Support
+[dir='rtl'] {
+  .p-dropdown {
+    .p-dropdown-trigger {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// Search input
+.p-input-icon-left {
+    width: 100%;
+
+    input {
+        width: 100%;
+        padding-left: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+
+        &:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+        }
+    }
+}
+
+// Mobile menu
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+
+// Active link
+.router-link-active {
+    color: #3b82f6;
+    font-weight: 600;
+}
